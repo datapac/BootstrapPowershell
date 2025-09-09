@@ -1,5 +1,10 @@
-$coreUrl = "https://raw.githubusercontent.com/datapac/bootstrappowershell/main/bootstrappowershell.ps1"
-$coreFunctions = Invoke-WebRequest -Uri $coreUrl -UseBasicParsing
-Invoke-Expression $coreFunctions.Content
+$coreUrl = "https://raw.githubusercontent.com/Datapac/BootstrapPowershell/main/BootstrapCoreFunctions.ps1"
+Write-Host "`$coreUrl=$coreUrl"
 
-Write-Info "Hello World"
+$coreFunctions = Invoke-WebRequest -Uri $coreUrl -UseBasicParsing
+Write-Host "`$coreFunctions=$coreFunctions"
+Write-Host "`$coreFunctions=$coreFunctions.Content"
+
+#Invoke-Expression $coreFunctions.Content
+
+#Write-Info "Hello World"

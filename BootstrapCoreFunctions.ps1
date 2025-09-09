@@ -113,9 +113,12 @@ function Validate-GitIdentity {
         # Define config values if necessary
         if (-not $userName -or -not $userEmail) {
             
+            $userName  = Read-Host "Enter your GIT user.name (e.g. 'FirstName LastName')"
+            $userEmail = Read-Host "Enter your GIT user.email "
+            
             Write-Info "Validate-GitIdentity() Setting GIT user.name and user.email"
-            git config --global user.name "Stewart Robinson" | Out-File -FilePath $logPath -Append
-            git config --global user.email "srobinson@edatapac.com" | Out-File -FilePath $logPath -Append
+            git config --global user.name "$userName" | Out-File -FilePath $logPath -Append
+            git config --global user.email "$userEmail" | Out-File -FilePath $logPath -Append
 
             $userName  = git config --global user.name
             $userEmail = git config --global user.email
