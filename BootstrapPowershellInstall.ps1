@@ -1,17 +1,24 @@
 # **********************************
-# Load Bootstrap Core Functions needed to install Powershell ScriptsRoot
-# Runs on Powershell 5,1 and above
+# Load Bootstrap Core Functions needed to install GIT and Powershell
+# Powershell 5,1 and above
 # ********************************** 
 
-$coreUrl = "https://raw.githubusercontent.com/datapac/bootstrappowershell/main/bootstrappowershell.ps1"
+Write-Info "*** Starting BootstrapPowershellInstall.ps1 ***"
+
+# Define the PUBLIC core url for BootstrapCoreFunctions.ps1
+$coreUrl = "https://raw.githubusercontent.com/Datapac/BootstrapPowershell/main/BootstrapCoreFunctions.ps1"
+Write-Host "`$coreUrl=$coreUrl"
+
+# Get the core functions script
 $coreFunctions = Invoke-WebRequest -Uri $coreUrl -UseBasicParsing
+
+# Execute the core functions script to define my functions  
 Invoke-Expression $coreFunctions.Content
 
-Write-Info "*** Starting BootstrapPowershellInstall ***"
+Write-Success "Bootstrap Core Functions Loaded"
 
 # Define Current Working Directory (ScriptsRoot folder) and force creating new audit log file
 $scriptsRootFolder = 'F:\Apps\DatapacMgt\ScriptsRoot'
-$logPath = $null 
 
 # Ensure scripts and audit log will be in expected folder 'F:\Apps\DatapacMgt\ScriptsRoot'
 try {
@@ -86,4 +93,4 @@ if ($retn -ieq 'y') {
     Install-Powershell7 "https://github.com/PowerShell/PowerShell/releases/download/v7.5.2/PowerShell-7.5.2-win-x64.msi"
 }
 
-Write-Info "*** End of PowershellBootstrap.ps1 ***"
+Write-Success "*** End of BootstrapPowershellInstall.ps1 ***"
