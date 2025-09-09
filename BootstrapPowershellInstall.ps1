@@ -3,7 +3,7 @@
 # Powershell 5,1 and above
 # ********************************** 
 
-Write-Info "*** Starting BootstrapPowershellInstall.ps1 ***"
+Write-Host "*** Starting BootstrapPowershellInstall.ps1 ***"
 
 # Define the PUBLIC core url for BootstrapCoreFunctions.ps1
 $coreUrl = "https://raw.githubusercontent.com/Datapac/BootstrapPowershell/main/BootstrapCoreFunctions.ps1"
@@ -15,10 +15,11 @@ $coreFunctions = Invoke-WebRequest -Uri $coreUrl -UseBasicParsing
 # Execute the core functions script to define my functions  
 Invoke-Expression $coreFunctions.Content
 
-Write-Success "Bootstrap Core Functions Loaded"
-
 # Define Current Working Directory (ScriptsRoot folder) and force creating new audit log file
 $scriptsRootFolder = 'F:\Apps\DatapacMgt\ScriptsRoot'
+$logPath = $null 
+
+Write-Success "Bootstrap Core Functions Loaded"
 
 # Ensure scripts and audit log will be in expected folder 'F:\Apps\DatapacMgt\ScriptsRoot'
 try {
